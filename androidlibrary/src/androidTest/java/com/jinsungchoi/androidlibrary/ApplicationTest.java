@@ -1,4 +1,4 @@
-package com.jinsungchoi.mylibrary;
+package com.jinsungchoi.androidlibrary;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
