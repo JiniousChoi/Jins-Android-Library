@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Library</string>
+    <string name="app_name" translatable="false">My Library</string>
+    <string name="alert_button_confirm">Confirm</string>
 </resources>
