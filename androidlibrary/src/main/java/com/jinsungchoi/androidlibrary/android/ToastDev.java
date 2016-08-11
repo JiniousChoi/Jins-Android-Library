@@ -3,7 +3,7 @@ package com.jinsungchoi.androidlibrary.android;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.jinsungchoi.androidlibrary.BuildConfig;
+import com.jinsungchoi.androidlibrary.DebugUtils;
 
 
 /**
@@ -12,7 +12,7 @@ import com.jinsungchoi.androidlibrary.BuildConfig;
 public class ToastDev {
 
     public static void makeTextAndShow(Context context, CharSequence text, int duration) {
-        if(!BuildConfig.DEBUG) {
+        if(!DebugUtils.isDebuggable()) {
             return;
         }
 

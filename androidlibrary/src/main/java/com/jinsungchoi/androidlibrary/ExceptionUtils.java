@@ -27,7 +27,7 @@ public class ExceptionUtils {
     }
 
     public static void LogAndThrowExInDev(String tag, String errorMsg, Class<? extends RuntimeException> clazz) {
-        if(!BuildConfig.DEBUG) return;
+        if(!DebugUtils.isDebuggable()) return;
 
         //logging
         LogDev.e(tag, errorMsg);

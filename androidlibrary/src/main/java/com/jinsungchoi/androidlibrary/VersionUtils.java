@@ -94,7 +94,7 @@ public class VersionUtils {
                 }
                 default: {
                     String errorMsg = String.format("version(%s) caused error while being parsed", version);
-                    if (BuildConfig.DEBUG) {
+                    if (DebugUtils.isDebuggable()) {
                         throw new InvalidParameterException(errorMsg);
                     }
                 }
