@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">My Library</string>
-    <string name="alert_button_confirm">Confirm</string>
+    <string name="alert_button_perm_request_continue">Continue</string>
+    <string name="alert_button_perm_request_deny">Deny</string>
 </resources>

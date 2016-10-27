@@ -45,12 +45,13 @@ public class PermissionManager {
                 .setTitle(data.title)
                 .setMessage(data.message)
                 .setCancelable(false)
-                .setPositiveButton(R.string.alert_button_confirm, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.alert_button_perm_request_continue, new DialogInterface.OnClickListener() {
                                           @Override
                                           public void onClick(DialogInterface dialog, int which) {
                         ActivityCompat.requestPermissions(data.activity, data.permissions, data.requestCode);
-                }
-            }).create()
+                }})
+                .setNegativeButton(R.string.alert_button_perm_request_deny, null)
+                .create()
                 .show();
     }
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="alert_button_confirm">확인</string>
+    <string name="alert_button_perm_request_continue">계속</string>
+    <string name="alert_button_perm_request_deny">거절</string>
 </resources>
