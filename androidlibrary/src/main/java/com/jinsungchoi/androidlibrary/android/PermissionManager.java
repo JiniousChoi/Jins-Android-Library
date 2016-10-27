@@ -41,9 +41,14 @@ public class PermissionManager {
     }
 
     public static void requestPermission(final DataForPermissionRequest data) {
+        String note = data.activity.getString(R.string.alert_message_permission_common_note);
+
+        String messageWithNote = new StringBuilder().append(data.message)
+                .append('\n').append('\n').append(note).toString();
+
         new AlertDialog.Builder(data.activity)
                 .setTitle(data.title)
-                .setMessage(data.message)
+                .setMessage(messageWithNote)
                 .setCancelable(false)
                 .setPositiveButton(R.string.alert_button_perm_request_continue, new DialogInterface.OnClickListener() {
                                           @Override
