@@ -16,7 +16,7 @@ public class ToastDev {
             return;
         }
 
-        Toast toast = Toast.makeText(context, text, duration);
+        Toast toast = Toast.makeText(context, String.format("[ToastDev]%s", text), duration);
         toast.show();
     }
 }
