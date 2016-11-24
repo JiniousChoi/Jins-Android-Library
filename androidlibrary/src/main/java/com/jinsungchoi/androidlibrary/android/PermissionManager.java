@@ -51,11 +51,17 @@ public class PermissionManager {
                 .setMessage(messageWithNote)
                 .setCancelable(false)
                 .setPositiveButton(R.string.alert_button_perm_request_continue, new DialogInterface.OnClickListener() {
-                                          @Override
-                                          public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
                         ActivityCompat.requestPermissions(data.activity, data.permissions, data.requestCode);
-                }})
-                .setNegativeButton(R.string.alert_button_perm_request_deny, null)
+                        data.clickPositiveButtonListener.onClick(dialog, which);
+                    }})
+                .setNegativeButton(R.string.alert_button_perm_request_deny, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        data.clickNegativeButtonListener.onClick(dialog, which);
+                    }
+                })
                 .create()
                 .show();
     }
@@ -67,9 +73,18 @@ public class PermissionManager {
         String permission;
         String[] permissions; // new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}
         Integer requestCode;
+        DialogInterface.OnClickListener clickPositiveButtonListener;
+        DialogInterface.OnClickListener clickNegativeButtonListener;
 
         public DataForPermissionRequest() {
+            DialogInterface.OnClickListener nullListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //null pattern
+                }
+            };
 
+            clickPositiveButtonListener = clickNegativeButtonListener = nullListener;
         }
 
         public boolean isValid() {
@@ -110,6 +125,18 @@ public class PermissionManager {
             this.requestCode = requestCode;
             return this;
         }
+
+        public DataForPermissionRequest setOnClickPositiveButtonListener(DialogInterface.OnClickListener clickPositiveButtonListener) {
+            this.clickPositiveButtonListener = clickPositiveButtonListener;
+            return this;
+        }
+
+        public DataForPermissionRequest setOnClickNegativeButtonListener(DialogInterface.OnClickListener clickNegativeButtonListener) {
+            this.clickNegativeButtonListener = clickNegativeButtonListener;
+            return this;
+        }
+
     }
 
 }
+
